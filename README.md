@@ -110,6 +110,8 @@ class IndexPage extends React.Component {
     )
   }
 }
+
+export default IndexPage
 ```
 
 ## Intended Use
