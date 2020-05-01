@@ -11,9 +11,9 @@
 This is what a component using `@webriq/gatsby-webriq-form` looks like:
 
 ```javascript
-import React from 'react'
+import React from "react";
 
-import WebriQForm from '@webriq/gatsby-webriq-form'
+import WebriQForm from "@webriq/gatsby-webriq-form";
 
 const MyComponent = () => (
   <WebriQForm
@@ -27,9 +27,9 @@ const MyComponent = () => (
     <textarea name="message"></textarea>
     <input type="submit" value="Send Message" />
   </WebriQForm>
-)
+);
 
-export default MyComponent
+export default MyComponent;
 ```
 
 where:
@@ -38,29 +38,27 @@ where:
   So it goes like:
 
   ```javascript
-    <WebriQForm formId={FORM_ID}>
-      ...
-    </WebriQForm>
+  <WebriQForm formId={FORM_ID}>...</WebriQForm>
   ```
 
 - Prop `redirectUrl` is an alias of `data-thankyou-url`
   So it goes like:
 
   ```javascript
-    <WebriQForm redirectUrl={URL_TO_REDIRECT_AFTER_SUBMISSION}>
-      ...
-    </WebriQForm>
+  <WebriQForm redirectUrl={URL_TO_REDIRECT_AFTER_SUBMISSION}>...</WebriQForm>
   ```
 
 - Props `name`, `id`, `className`, `data-thankyou-url` are optional
 - Prop `name` is for form name, `id` is the form id attribute, and `className` for css classes.
 
+- **[Added in version 0.2]** Props `unmountScript` will remove all WebriQ Form DOM related scripts on component unmount. On next component render, they will be loaded and added back to the DOM as a means to start fresh. This process is rather slow and as a last resort to resolve problems introduced by multiple forms, etc.
+
 ## Example used in Newsletter
 
 ```javascript
-import React from 'react'
+import React from "react";
 
-import WebriQForm from '@webriq/gatsby-webriq-form'
+import WebriQForm from "@webriq/gatsby-webriq-form";
 
 class IndexPage extends React.Component {
   render() {
@@ -74,9 +72,7 @@ class IndexPage extends React.Component {
         <div className="form-row">
           <div className="col-12 mb-3">
             <div className="form-group">
-              <label htmlFor="email_address">
-                Enter Your Email Address
-              </label>
+              <label htmlFor="email_address">Enter Your Email Address</label>
               <input
                 className="form-control"
                 type="email"
@@ -97,29 +93,29 @@ class IndexPage extends React.Component {
 
           <div className="col-12">
             <div className="form-group">
-              <button
-                className="btn btn-primary hvr-shadow"
-                type="submit"
-              >
+              <button className="btn btn-primary hvr-shadow" type="submit">
                 Submit
               </button>
             </div>
           </div>
         </div>
       </WebriQForm>
-    )
+    );
   }
 }
 
-export default IndexPage
+export default IndexPage;
 ```
 
 ## Intended Use
 
 This is used specifically for [WebriQ Forms](https://forms.webriq.com) which is by default integrated in [WebriQ App](https://app.webriq.com).
 
+## Versions
+
+- 0.0.2 - Bugfixes and improvements.
+- 0.0.1 - Initial release
+
 ## Bugs / Issues / Suggestions
 
 Please file a new issue at Issues tab. Thank you! :)
-
-

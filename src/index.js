@@ -1,37 +1,60 @@
-import React from 'react'
+import React from "react";
 
 class WebriQForm extends React.Component {
   constructor(props) {
-    super(props)
-    this.loadWebriQFormScript = this.loadWebriQFormScript.bind(this)
+    super(props);
+    console.log(props);
+    this.loadWebriQFormScript = this.loadWebriQFormScript.bind(this);
   }
 
   componentDidMount() {
     if (window && !window.isWebriQFormLoaded) {
-      this.loadWebriQFormScript()
+      this.loadWebriQFormScript();
     }
 
     if (window && window.isWebriQFormLoaded) {
-      window.webriqFormRefresh()
+      window.webriqFormRefresh();
     }
   }
 
   loadWebriQFormScript() {
-    const script = document.createElement('script')
-    script.type = 'text/javascript'
-    script.id = 'webriqform'
-    script.src =
-      this.props.scriptSrc || 'https://forms.webriq.com/js/initReactForms'
-    document.body.appendChild(script)
-    const headScript = document.getElementsByTagName('script')[0]
-    headScript.parentNode.insertBefore(script, headScript)
+    const webriqFormScript = document.getElementById("webriqform");
+
+    if (!webriqFormScript) {
+      const script = document.createElement("script");
+      script.type = "text/javascript";
+      script.id = "webriqform";
+      script.src =
+        this.props.scriptSrc || "https://forms.webriq.com/js/initReactForms";
+      document.body.appendChild(script);
+      const headScript = document.getElementsByTagName("script")[0];
+      headScript.parentNode.insertBefore(script, headScript);
+    }
+  }
+
+  componentWillUnmount() {
+    const { unmountScript } = this.props;
+
+    const webriqFormScript = document.getElementById("webriqform");
+    if (webriqFormScript && unmountScript) {
+      webriqFormScript.parentNode.removeChild(webriqFormScript);
+    }
+
+    if (window && unmountScript) {
+      window.isWebriQFormLoaded = false;
+    }
+
+    const webriqFormRecaptcha = document.getElementById("webriqFormRecaptcha");
+    if (webriqFormRecaptcha && unmountScript) {
+      webriqFormRecaptcha.parentNode.removeChild(webriqFormRecaptcha);
+    }
   }
 
   render() {
-    const { id, name, className } = this.props
-    const formId = this.props.formId || this.props['data-form-id']
+    const { id, name, className, ...rest } = this.props;
+    const formId = this.props.formId || this.props["data-form-id"];
     let redirectURL =
-      this.props.redirectUrl || this.props['data-thankyou-url'] || '/thank-you'
+      this.props.redirectUrl || this.props["data-thankyou-url"] || "/thank-you";
 
     return (
       <form
@@ -42,11 +65,12 @@ class WebriQForm extends React.Component {
         data-form-id={formId}
         data-thankyou-url={redirectURL}
         webriq="true"
+        {...rest}
       >
         {this.props.children}
       </form>
-    )
+    );
   }
 }
 
-export default WebriQForm
+export default WebriQForm;
