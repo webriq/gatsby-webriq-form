@@ -7,9 +7,9 @@ exports.default = void 0;
 
 var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
 
-var _objectWithoutPropertiesLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/objectWithoutPropertiesLoose"));
-
 var _react = _interopRequireDefault(require("react"));
+
+var _jsxFileName = "/Users/dorelljames/Projects/serverless/gatsby-webriq-form/src/index.js";
 
 class WebriQForm extends _react.default.Component {
   constructor(props) {
@@ -43,7 +43,9 @@ class WebriQForm extends _react.default.Component {
   }
 
   componentWillUnmount() {
-    const unmountScript = this.props.unmountScript;
+    const {
+      unmountScript
+    } = this.props;
     const webriqFormScript = document.getElementById("webriqform");
 
     if (webriqFormScript && unmountScript) {
@@ -62,14 +64,15 @@ class WebriQForm extends _react.default.Component {
   }
 
   render() {
-    const _this$props = this.props,
-          id = _this$props.id,
-          name = _this$props.name,
-          className = _this$props.className,
-          rest = (0, _objectWithoutPropertiesLoose2.default)(_this$props, ["id", "name", "className"]);
+    const {
+      id,
+      name,
+      className,
+      ...rest
+    } = this.props;
     const formId = this.props.formId || this.props["data-form-id"];
     let redirectURL = this.props.redirectUrl || this.props["data-thankyou-url"] || "/thank-you";
-    return _react.default.createElement("form", (0, _extends2.default)({
+    return /*#__PURE__*/_react.default.createElement("form", (0, _extends2.default)({
       name: name,
       id: id,
       className: className,
@@ -77,7 +80,14 @@ class WebriQForm extends _react.default.Component {
       "data-form-id": formId,
       "data-thankyou-url": redirectURL,
       webriq: "true"
-    }, rest), this.props.children);
+    }, rest, {
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 60,
+        columnNumber: 7
+      }
+    }), this.props.children);
   }
 
 }

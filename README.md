@@ -113,7 +113,7 @@ This is used specifically for [WebriQ Forms](https://forms.webriq.com) which is 
 
 ## Versions
 
-- 0.0.2 - Bugfixes and improvements.
+- 0.2.0 - Bugfixes and improvements.
 - 0.0.1 - Initial release
 
 ## Bugs / Issues / Suggestions
