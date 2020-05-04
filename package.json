@@ -1,13 +1,10 @@
 {
   "name": "@webriq/gatsby-webriq-form",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Gatsby plugin for WebriQ Forms (forms.webriq.com)",
   "main": "index.js",
   "dependencies": {
-    "@babel/runtime": "^7.0.0",
-    "gatsby": "^2.21.7",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "@babel/runtime": "^7.0.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.0.0",
